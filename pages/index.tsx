@@ -27,7 +27,9 @@ const sections: Section[] = [
 const Experiment = (): JSX.Element => {
   // Initialize variables for tracking the current section index, scroll position, and whether or not the user can currently scroll
   const router = useRouter();
-  const path = router.asPath.replace("/#", "");
+  const [path, setPath] = useState(
+    typeof window !== "undefined" ? window.location.hash : ""
+  );
   const index = sections.findIndex((section) => section.sectionName === path);
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
     index >= 0 ? index : 0
@@ -42,13 +44,30 @@ const Experiment = (): JSX.Element => {
       (section) => section.sectionName === sectionId
     );
 
-    console.log({ sectionIndex });
-
     // If a section ID is found, update the current section index
     if (sectionIndex !== -1) {
       setCurrentSectionIndex(sectionIndex);
     }
   }, [path]);
+
+  useEffect(() => {
+    // Listen for changes to the hash value in the URL bar
+    const handleHashChange = () => {
+      setPath(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Remove event listener on unmount
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
+  const handleNavigation = (sectionName: string) => {
+    setPath(`#${sectionName}`);
+    window.location.hash = `#${sectionName}`;
+  };
 
   // Define a function to handle mouse wheel events
   const handleOnMouseWheel = (
@@ -81,7 +100,7 @@ const Experiment = (): JSX.Element => {
     // Move to the next section if the user is scrolling down and has reached the bottom of the current section
     if (
       delta < 0 &&
-      bottomTrigger &&
+      currentScrollPosition === sectionHeight &&
       userCanScroll &&
       currentSectionIndex < sections.length - 1
     ) {
