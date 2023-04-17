@@ -1,15 +1,7 @@
-import About from "@/components/About";
-import Home from "@/components/Home";
+import { sections } from "@/utils/component-list";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-
-// Define a Section interface to keep track of each section's id, component, and section name
-interface Section {
-  id: number;
-  component: JSX.Element;
-  sectionName: string;
-}
 
 // Define a transition object to apply to all motion sections
 const transition = {
@@ -17,19 +9,15 @@ const transition = {
   ease: [0.165, 0.84, 0.44, 1],
 };
 
-// Define the sections and their associated components and section names
-const sections: Section[] = [
-  { id: 1, component: <Home />, sectionName: "home" },
-  { id: 2, component: <About />, sectionName: "about" },
-];
+interface Props {
+  path: string;
+  handleNavigation: (sectionName: string) => void;
+}
 
 // Define the Experiment component
-const Experiment = (): JSX.Element => {
+const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   // Initialize variables for tracking the current section index, scroll position, and whether or not the user can currently scroll
   const router = useRouter();
-  const [path, setPath] = useState(
-    typeof window !== "undefined" ? window.location.hash : ""
-  );
   const index = sections.findIndex((section) => section.sectionName === path);
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
     index >= 0 ? index : 0
@@ -49,25 +37,6 @@ const Experiment = (): JSX.Element => {
       setCurrentSectionIndex(sectionIndex);
     }
   }, [path]);
-
-  useEffect(() => {
-    // Listen for changes to the hash value in the URL bar
-    const handleHashChange = () => {
-      setPath(window.location.hash);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-
-    // Remove event listener on unmount
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  const handleNavigation = (sectionName: string) => {
-    setPath(`#${sectionName}`);
-    window.location.hash = `#${sectionName}`;
-  };
 
   // Define a function to handle mouse wheel events
   const handleOnMouseWheel = (
@@ -105,13 +74,13 @@ const Experiment = (): JSX.Element => {
       currentSectionIndex < sections.length - 1
     ) {
       setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex + 1);
-      router.push(`#${sections[currentSectionIndex + 1].sectionName}`);
+      handleNavigation(sections[currentSectionIndex + 1].sectionName);
     }
 
     // Move to the previous section if the user is scrolling up and has reached the top of the current section
     if (delta > 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
       setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex - 1);
-      router.push(`#${sections[currentSectionIndex - 1].sectionName}`);
+      handleNavigation(sections[currentSectionIndex - 1].sectionName);
     }
   };
 

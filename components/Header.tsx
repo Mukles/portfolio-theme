@@ -11,11 +11,13 @@ const overlay = {
   closed: {
     background: "rgb(255, 255, 225, 1",
   },
-
-  transition: { duration: 0.3 },
 };
 
-const Header = () => {
+interface Props {
+  handleNavigation: (sectionName: string) => void;
+}
+
+const Header = ({ handleNavigation }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
@@ -44,6 +46,7 @@ const Header = () => {
               initial={false}
               variants={overlay}
               animate={isOpen ? "open" : "closed"}
+              transition={{ duration: 0.3 }}
               className="fixed top-0 left-0 w-full h-full z-20"
             >
               <SideBar isOpen={isOpen} toggle={() => toggleOpen()} />
