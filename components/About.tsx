@@ -1,8 +1,8 @@
 const About = () => {
   return (
     <div className="container mx-auto max-w-[1164px]">
-      <div className="flex flex-wrap flex-row-reverse pt-[100px]">
-        <div className=" basis-[42%] max-w-[42%] justify-center flex flex-col">
+      <div className="flex flex-wrap flex-col lg:flex-row-reverse pt-[100px]">
+        <div className="lg:basis-[42%] lg:max-w-[42%] justify-center flex flex-col">
           <h1 className="text-3xl font-bold leading-[45px] text-[#1d2043]">
             What Services I Provde To <br />
             <span className="text-[#df5646]">My Clients In Here.</span>

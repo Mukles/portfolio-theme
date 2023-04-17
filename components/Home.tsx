@@ -20,8 +20,8 @@ const Home = () => {
         </a>
       </div>
 
-      <div className="flex flex-wrap pt-[100px]">
-        <div className=" basis-[42%] max-w-[42%]">
+      <div className="flex flex-wrap flex-col lg:flex-row pt-[100px] ">
+        <div className="lg:basis-[42%] lg:max-w-[42%]">
           <h3 className="text-3xl font-bold">Introduction</h3>
           <h1 className="text-6xl font-bold leading-[82px] text-[#1d2043]">
             HI, <br /> I&rsquo;m{" "}

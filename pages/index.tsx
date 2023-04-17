@@ -41,8 +41,11 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
     event: React.WheelEvent<HTMLDivElement>
   ): void => {
     // Calculate the amount of scroll delta from the mouse wheel event
-    const delta = -event.deltaY / 120;
+    const deltaY = -event.deltaY / 120;
+    hanldeScroll(deltaY);
+  };
 
+  const hanldeScroll = (deltaY: number) => {
     // Find the current section by its index and get its associated section element
     const currentSection = sections[currentSectionIndex];
     const currentSectionElement = document.getElementById(
@@ -66,96 +69,38 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
 
     // Move to the next section if the user is scrolling down and has reached the bottom of the current section
     if (
-      delta < 0 &&
+      deltaY < 0 &&
       currentScrollPosition === sectionHeight &&
       userCanScroll &&
       currentSectionIndex < sections.length - 1
     ) {
-      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex + 1);
+      setCurrentSectionIndex(currentSectionIndex + 1);
       handleNavigation(sections[currentSectionIndex + 1].sectionName);
     }
 
     // Move to the previous section if the user is scrolling up and has reached the top of the current section
-    if (delta > 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
-      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex - 1);
+    if (deltaY > 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
+      setCurrentSectionIndex(currentSectionIndex - 1);
       handleNavigation(sections[currentSectionIndex - 1].sectionName);
     }
   };
 
-  const handleScroll = (deltaY: number) => {
-    // Find the current section by its index and get its associated section element
-    const currentSection = sections[currentSectionIndex];
-    const currentSectionElement = document.getElementById(
-      currentSection.sectionName
-    ) as HTMLElement;
-
-    // Calculate the current scroll position, total height of the section, and whether or not the user is scrolling up or down
-    const currentScrollPosition = currentSectionElement.scrollTop;
-    const sectionHeight =
-      currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
-    const isScrollingUp =
-      previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
-
-    // Update the scroll position for the next event
-    previousScrollPositionRef.current = currentSectionElement.scrollTop;
-
-    // Define the triggers for when to move to the next section
-    const bottomTrigger =
-      isScrollingUp === "down" && sectionHeight === currentScrollPosition;
-    const upTrigger = isScrollingUp === "up" && currentScrollPosition === 0;
-
-    // Move to the next section if the user is scrolling down and has reached the bottom of the current section
-    if (
-      deltaY > 0 &&
-      currentScrollPosition === sectionHeight &&
-      userCanScroll &&
-      currentSectionIndex < sections.length - 1
-    ) {
-      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex + 1);
-      handleNavigation(sections[currentSectionIndex + 1].sectionName);
-    }
-
-    // Move to the previous section if the user is scrolling up and has reached the top of the current section
-    if (deltaY < 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
-      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex - 1);
-      handleNavigation(sections[currentSectionIndex - 1].sectionName);
-    }
-  };
-
-  const handleOnTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+  const handleOnTouchStart = (event: React.TouchEvent<HTMLElement>) => {
     // Store the initial touch position
     const startY = event.touches[0].clientY;
+    // console.log({ startY });
 
     const handleOnTouchMove = (moveEvent: TouchEvent) => {
       // Calculate the change in touch position
       const deltaY = moveEvent.touches[0].clientY - startY;
+      // console.log({ deltaY });
 
       // Handle the scroll based on the change in touch position
-      handleScroll(deltaY);
+      hanldeScroll(deltaY);
     };
 
     // Add the touch move event listener
     document.addEventListener("touchmove", handleOnTouchMove, {
-      passive: false,
-    });
-
-    const handleOnTouchEnd = () => {
-      // Remove the touch move event listener
-      document.removeEventListener("touchmove", handleOnTouchMove);
-
-      // Reset the scroll position to prevent momentum scrolling
-      const currentSection = sections[currentSectionIndex];
-      const currentSectionElement = document.getElementById(
-        currentSection.sectionName
-      ) as HTMLElement;
-      currentSectionElement.scrollTo({
-        top: currentSectionElement.scrollTop,
-        behavior: "smooth",
-      });
-    };
-
-    // Add the touch end event listener
-    document.addEventListener("touchend", handleOnTouchEnd, {
       passive: false,
     });
   };
