@@ -118,7 +118,7 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}
-          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white py-[100px]`}
+          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white py-[185px] lg:py-[100px]`}
         >
           {section.component}
         </motion.section>

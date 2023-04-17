@@ -24,7 +24,7 @@ const About = () => {
           </a>
         </div>
         <div className="flex-1">
-          <img src="./img/services.png" alt="about" />
+          <img src="./img/about.png" alt="about" />
         </div>
       </div>
     </div>
