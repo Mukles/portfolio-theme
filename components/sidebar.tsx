@@ -1,13 +1,15 @@
+import navigationData from "@/utils/navigationData";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 interface Props {
+  handleNavigation: (sectionName: string) => void;
   isOpen: boolean;
   toggle: () => void;
 }
 
-const SideBar = ({ isOpen, toggle }: Props) => {
+const SideBar = ({ isOpen, toggle, handleNavigation }: Props) => {
   const sideBarRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (event: MouseEvent) => {
@@ -55,86 +57,17 @@ const SideBar = ({ isOpen, toggle }: Props) => {
       </ul>
       <div className="h-full overflow-y-auto mt-24">
         <ul className="space-y-7">
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
-              href={"#services"}
-            >
-              Services
-            </Link>
-          </li>
+          {navigationData.map(({ label, id, href }) => (
+            <li key={id}>
+              <Link
+                onClick={() => handleNavigation(href)}
+                className="text-[18px] leading-[32px] font-bold text-[#1f2044]"
+                href={`#${href}`}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </motion.div>

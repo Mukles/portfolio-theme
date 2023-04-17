@@ -1,12 +1,11 @@
 import { sections } from "@/utils/component-list";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
 // Define a transition object to apply to all motion sections
 const transition = {
   duration: 1,
-  ease: [0.165, 0.84, 0.44, 1],
+  ease: [0.55, 0.085, 0, 0.99],
 };
 
 interface Props {
@@ -17,7 +16,6 @@ interface Props {
 // Define the Experiment component
 const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   // Initialize variables for tracking the current section index, scroll position, and whether or not the user can currently scroll
-  const router = useRouter();
   const index = sections.findIndex((section) => section.sectionName === path);
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
     index >= 0 ? index : 0
@@ -84,10 +82,89 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
     }
   };
 
+  const handleScroll = (deltaY: number) => {
+    // Find the current section by its index and get its associated section element
+    const currentSection = sections[currentSectionIndex];
+    const currentSectionElement = document.getElementById(
+      currentSection.sectionName
+    ) as HTMLElement;
+
+    // Calculate the current scroll position, total height of the section, and whether or not the user is scrolling up or down
+    const currentScrollPosition = currentSectionElement.scrollTop;
+    const sectionHeight =
+      currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
+    const isScrollingUp =
+      previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
+
+    // Update the scroll position for the next event
+    previousScrollPositionRef.current = currentSectionElement.scrollTop;
+
+    // Define the triggers for when to move to the next section
+    const bottomTrigger =
+      isScrollingUp === "down" && sectionHeight === currentScrollPosition;
+    const upTrigger = isScrollingUp === "up" && currentScrollPosition === 0;
+
+    // Move to the next section if the user is scrolling down and has reached the bottom of the current section
+    if (
+      deltaY > 0 &&
+      currentScrollPosition === sectionHeight &&
+      userCanScroll &&
+      currentSectionIndex < sections.length - 1
+    ) {
+      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex + 1);
+      handleNavigation(sections[currentSectionIndex + 1].sectionName);
+    }
+
+    // Move to the previous section if the user is scrolling up and has reached the top of the current section
+    if (deltaY < 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
+      setCurrentSectionIndex((currentSectionIndex) => currentSectionIndex - 1);
+      handleNavigation(sections[currentSectionIndex - 1].sectionName);
+    }
+  };
+
+  const handleOnTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    // Store the initial touch position
+    const startY = event.touches[0].clientY;
+
+    const handleOnTouchMove = (moveEvent: TouchEvent) => {
+      // Calculate the change in touch position
+      const deltaY = moveEvent.touches[0].clientY - startY;
+
+      // Handle the scroll based on the change in touch position
+      handleScroll(deltaY);
+    };
+
+    // Add the touch move event listener
+    document.addEventListener("touchmove", handleOnTouchMove, {
+      passive: false,
+    });
+
+    const handleOnTouchEnd = () => {
+      // Remove the touch move event listener
+      document.removeEventListener("touchmove", handleOnTouchMove);
+
+      // Reset the scroll position to prevent momentum scrolling
+      const currentSection = sections[currentSectionIndex];
+      const currentSectionElement = document.getElementById(
+        currentSection.sectionName
+      ) as HTMLElement;
+      currentSectionElement.scrollTo({
+        top: currentSectionElement.scrollTop,
+        behavior: "smooth",
+      });
+    };
+
+    // Add the touch end event listener
+    document.addEventListener("touchend", handleOnTouchEnd, {
+      passive: false,
+    });
+  };
+
   return (
     <AnimatePresence initial={false}>
       {sections.map((section, i) => (
         <motion.section
+          onTouchStart={handleOnTouchStart}
           onWheel={handleOnMouseWheel}
           id={`${section.sectionName}`}
           style={{ zIndex: sections.length - i }}

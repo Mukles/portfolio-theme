@@ -2,7 +2,7 @@ import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 const Home = () => {
   return (
-    <div className="container mx-auto max-w-[1130px]">
+    <div className="container mx-auto max-w-[1176px]">
       <div className="mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] flex justify-between">
         <ul className="flex">
           <li className="pr-10 mr-10 after:[/] ">
