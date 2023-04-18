@@ -2,7 +2,7 @@ import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 const Home = () => {
   return (
-    <div className="container mx-auto">
+    <div className="sm:container max-[767px]:max-width-[640px]">
       <div className="hidden mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] lg:flex justify-between">
         <ul className="flex">
           <li className="pr-10 mr-10 after:[/] ">
@@ -22,15 +22,19 @@ const Home = () => {
 
       <div className="flex flex-wrap">
         <div className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px] lg:pt-[100px]">
-          <h3 className="text-3xl font-bold">Introduction</h3>
-          <h1 className="text-6xl font-bold leading-[82px] text-[#1d2043]">
-            HI, <br /> I&rsquo;m{" "}
+          <h3 className="mb-4 before:content-[''] before:top-1/2 before:bg-[#707070] before:absolute before:h-[1px] before:w-[38px] before:left-0 relative">
+            <span className="text-sm leading-[14px] text-[#df5646] font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
+              About me
+            </span>
+          </h3>
+          <h1 className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-[#1d2043]">
+            Hi, <br /> I&rsquo;m{" "}
             <span className="text-[#df5646]">Niharika</span>
           </h1>
-          <h3 className="text-[31px] leading-[37px] text-[#1d2043] my-3">
+          <h3 className="text-[#1d2043] text-[20px] leading-[24px] xsm:text-[25px] xsm:leading-[30px] sm:!text-[31px] sm:!leading-[37px] my-3">
             User Interface Designer
           </h3>
-          <p className="text-lg leading-[32px] text-[#a3a5a7] my-4 max-w-[500px]">
+          <p className="leading-[32px] text-[16px] xsm:text-lg font-light text-[#a3a5a7] my-4 max-w-[500px]">
             Hey are looking for designer to build your
             <b className="text-[#1d2043] font-medium">
               {" "}
@@ -41,7 +45,7 @@ const Home = () => {
 
           <a
             href="#about"
-            className="text-sm leading-[32px] text-white font-medium py-2 my-12 rounded-lg text-center bg-[#df5646] inline-block w-[150px]"
+            className="text-sm leading-[32px] text-white font-medium py-2 mt-6 mb-9 lg:my-12 rounded-lg text-center bg-[#df5646] inline-block w-[150px]"
           >
             Hire Me
           </a>
