@@ -1,8 +1,12 @@
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowDownTrayIcon,
+  ArrowLongRightIcon,
+} from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const Home = () => {
   return (
-    <div className="sm:container max-[767px]:max-width-[640px]">
+    <div className="sm:container">
       <div className="hidden mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] lg:flex justify-between">
         <ul className="flex">
           <li className="pr-10 mr-10 after:[/] ">
@@ -45,9 +49,12 @@ const Home = () => {
 
           <a
             href="#about"
-            className="text-sm leading-[32px] text-white font-medium py-2 mt-6 mb-9 lg:my-12 rounded-lg text-center bg-[#df5646] inline-block w-[150px]"
+            className="group text-sm leading-[32px] text-white font-medium capitalize px-[22px] py-[10px] mt-6 mb-9 lg:my-12 text-center bg-[#df5646] relative inline-flex w-[150px] justify-between items-center rounded-[15px] before:transition-all before:duration-500 hover:before:left-[calc(100%-49px)] before:absolute before:content-[''] before:flex-none before:z-20  before:w-[44px] before:bg-white before:opacity-20 before:left-[5px] before:rounded-[10px] before:h-[calc(100%-10px)]"
           >
             Hire Me
+            <span className="group-hover:translate-x-[6px] transition-all duration-500">
+              <ArrowLongRightIcon className="w-5 h-5" />
+            </span>
           </a>
 
           <ul className="flex space-x-3">
@@ -98,8 +105,33 @@ const Home = () => {
             </li>
           </ul>
         </div>
-        <div className="lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]">
-          <img src="./img/about.png" alt="about" />
+        <div className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]">
+          {/* <img src="./img/about.png" alt="about" /> */}
+          <div className="relative">
+            <Image
+              width={72}
+              height={72}
+              layout="responsive"
+              alt="shape-one"
+              src="/img/shape-one.png"
+              className="absolute top-[20px] left-[28%] !max-w-[12%]"
+            />
+            <Image
+              width={40}
+              height={40}
+              alt="shape-two"
+              src="/img/shape-two.png"
+              className="absolute top-[20px] right-[30%] !max-w-[10%]"
+            />
+            <Image
+              width={600}
+              height={400}
+              layout="responsive"
+              src={"/img/about.png"}
+              alt="about"
+              className="m-auto "
+            />
+          </div>
         </div>
       </div>
     </div>
