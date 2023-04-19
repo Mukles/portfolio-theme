@@ -6,10 +6,8 @@
     Cursor animation
 ************************************************** */
 
-html:hover {
-  .cursor {
-    opacity: 1;
-  }
+html:hover .cursor {
+  opacity: 1;
 }
 
 .cursor {

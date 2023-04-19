@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 // Define a transition object to apply to all motion sections
 const transition = {
-  duration: 1,
+  duration: 1.3,
   ease: [0.55, 0.085, 0, 0.99],
 };
 
