@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 
-const fadeInUp = {
+export const fadeInUp = {
   hidden: {
     opacity: 0,
     y: 100,
@@ -21,16 +21,22 @@ const fadeInUp = {
 const zoomIn = {
   hidden: {
     scale: 0,
+    opacity: 0,
   },
   visible: {
-    scale: 1,
-    transition: { dealy: 3 },
+    opacity: 1,
+    scale: [1, 1.2, 1, 1.1, 1],
+    transition: { delay: 0.5, duration: 0.8, ease: "easeIn" },
   },
 };
 
 const imgReavel = {
-  hidden: { opacity: 0, y: 200 },
-  animate: { opacity: 1, y: 0 },
+  hidden: { y: 100, opacity: 0 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
+  },
 };
 
 const Home = () => {
@@ -157,7 +163,7 @@ const Home = () => {
           className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]"
         >
           {/* <img src="./img/about.png" alt="about" /> */}
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <motion.div
               variants={zoomIn}
               initial={"hidden"}
@@ -188,9 +194,9 @@ const Home = () => {
             </motion.div>
 
             <motion.div
-              initial={{ y: 200, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeIn" }}
+              variants={imgReavel}
+              initial="hidden"
+              whileInView="animate"
             >
               <Image
                 width={600}

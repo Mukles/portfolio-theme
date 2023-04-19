@@ -88,13 +88,10 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   const handleOnTouchStart = (event: React.TouchEvent<HTMLElement>) => {
     // Store the initial touch position
     const startY = event.touches[0].clientY;
-    // console.log({ startY });
 
     const handleOnTouchMove = (moveEvent: TouchEvent) => {
       // Calculate the change in touch position
       const deltaY = moveEvent.touches[0].clientY - startY;
-      // console.log({ deltaY });
-
       // Handle the scroll based on the change in touch position
       hanldeScroll(deltaY);
     };
