@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import CursorAnimation from "@/components/cursor-animation";
 import "@/styles/globals.css";
 import "@/styles/scrollbar.css";
 import type { AppProps } from "next/app";
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <CursorAnimation />
       <Header handleNavigation={handleNavigation} />
       <Component
         handleNavigation={handleNavigation}

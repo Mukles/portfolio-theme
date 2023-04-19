@@ -106,7 +106,7 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   };
 
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence>
       {sections.map((section, i) => (
         <motion.section
           onTouchStart={handleOnTouchStart}
