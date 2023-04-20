@@ -41,8 +41,6 @@ const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref);
 
-  console.log({ isInView });
-
   return (
     <div className="sm:container overflow-hidden">
       <div className="flex flex-wrap">

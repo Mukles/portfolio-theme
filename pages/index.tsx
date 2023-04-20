@@ -8,6 +8,16 @@ const transition = {
   ease: [0.55, 0.085, 0, 0.99],
 };
 
+const pagepilingVarients = {
+  increase: ({ direction, currentSectionIndex }: any) => {
+    return { y: currentSectionIndex + 1 };
+  },
+  decrease: (direction: any) => {
+    console.log({ direction });
+    return {};
+  },
+};
+
 interface Props {
   path: string;
   handleNavigation: (sectionName: string) => void;
@@ -20,8 +30,18 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
     index >= 0 ? index : 0
   );
+  const [tuple, setTuple] = useState<[number | null, number]>([
+    null,
+    currentSectionIndex,
+  ]);
   const previousScrollPositionRef = useRef<number>(0);
   const [userCanScroll, setUserCanScroll] = useState<boolean>(true);
+
+  if (tuple[1] !== currentSectionIndex) {
+    setTuple([tuple[1], currentSectionIndex]);
+  }
+
+  const prev = tuple[0] ?? 0; // Use nullish coalescing to provide a default value for prev
 
   useEffect(() => {
     // Check if the URL contains a section ID
@@ -102,23 +122,29 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
     });
   };
 
+  const direction: string =
+    currentSectionIndex > prev ? "increase" : "decrease";
+  console.log({ direction });
   return (
-    <AnimatePresence>
+    <AnimatePresence custom={{ direction, currentSectionIndex }}>
       {sections.map((section, i) => (
         <motion.section
+          variants={pagepilingVarients}
           onTouchStart={handleOnTouchStart}
           onWheel={handleOnMouseWheel}
           id={`${section.sectionName}`}
           style={{ zIndex: sections.length - i }}
-          key={section.id + "animation"}
-          animate={{
-            y:
-              currentSectionIndex + 1 === i
-                ? "100%"
-                : i < currentSectionIndex
-                ? "-100%"
-                : 0,
-          }}
+          key={section.id}
+          custom={{ direction, currentSectionIndex }}
+          animate={
+            currentSectionIndex > i
+              ? { y: "-100%" }
+              : direction === "increase"
+              ? currentSectionIndex === i
+                ? { y: ["100%", "0%"] }
+                : { y: 0 }
+              : { y: 0 }
+          }
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}
