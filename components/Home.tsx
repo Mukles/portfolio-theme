@@ -31,17 +31,17 @@ const zoomIn = {
 };
 
 const imgReavel = {
-  hidden: { y: 100, opacity: 0 },
+  hidden: { y: 200, opacity: 0 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
+    transition: { delay: 0.5, duration: 0.5, ease: "circOut" },
   },
 };
 
 const Home = () => {
   return (
-    <div className="sm:container">
+    <div className="sm:container overflow-hidden">
       <div className="hidden mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] lg:flex justify-between">
         <ul className="flex">
           <li className="pr-10 mr-10 after:[/] ">
@@ -59,7 +59,7 @@ const Home = () => {
         </a>
       </div>
 
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap overflow-hidden">
         <motion.div
           initial={"hidden"}
           whileInView={"animate"}

@@ -110,8 +110,15 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
           onWheel={handleOnMouseWheel}
           id={`${section.sectionName}`}
           style={{ zIndex: sections.length - i }}
-          key={section.id}
-          animate={{ y: i < currentSectionIndex ? "-100%" : 0 }}
+          key={section.id + "animation"}
+          animate={{
+            y:
+              currentSectionIndex + 1 === i
+                ? "100%"
+                : i < currentSectionIndex
+                ? "-100%"
+                : 0,
+          }}
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}

@@ -1,56 +1,112 @@
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+export const fadeInUp = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const zoomIn = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    scale: [1, 1.2, 1, 1.1, 1],
+    transition: { delay: 0.5, duration: 0.8, ease: "easeIn" },
+  },
+};
+
+const imgReavel = {
+  hidden: { y: 100, opacity: 0 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
+  },
+};
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  console.log({ isInView });
+
   return (
-    <div className="md:container">
-      <div className="hidden mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] lg:flex justify-between">
-        <ul className="flex">
-          <li className="pr-10 mr-10 after:[/] ">
-            <a href="callto:(+778)675-0765">Call: (+778) 675-0765</a>
-          </li>
-          <li>
-            <a href="mailto:hello_niharika@gmail.com">
-              hello_niharika@gmail.com
-            </a>
-          </li>
-        </ul>
-
-        <a className="flex" href="">
-          Download CV <ArrowDownTrayIcon className="w-5 h-5 ml-2" />
-        </a>
-      </div>
-
-      <div className="flex flex-wrap flex-row-reverse">
-        <div className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px] lg:pt-[100px]">
-          <h3 className="mb-4 before:content-[''] before:top-1/2 before:bg-[#707070] before:absolute before:h-[1px] before:w-[38px] before:left-0 relative">
+    <div className="sm:container overflow-hidden">
+      <div className="flex flex-wrap">
+        <motion.div
+          initial={"hidden"}
+          whileInView={"animate"}
+          transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
+          className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px] lg:pt-[100px]"
+        >
+          <motion.h3
+            variants={fadeInUp}
+            viewport={{ once: false }}
+            ref={ref}
+            className="mb-4 before:content-[''] before:top-1/2 before:bg-[#707070] before:absolute before:h-[1px] before:w-[38px] before:left-0 relative"
+          >
             <span className="text-sm leading-[14px] text-[#df5646] font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
               About me
             </span>
-          </h3>
-          <h1 className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-[#1d2043]">
+          </motion.h3>
+          <motion.h1
+            variants={fadeInUp}
+            viewport={{ once: false }}
+            className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-[#1d2043]"
+          >
             Hi, <br /> I&rsquo;m{" "}
             <span className="text-[#df5646]">Niharika</span>
-          </h1>
-          <h3 className="text-[#1d2043] text-[20px] leading-[24px] xsm:text-[25px] xsm:leading-[30px] sm:!text-[31px] sm:!leading-[37px] my-3">
+          </motion.h1>
+          <motion.h3
+            variants={fadeInUp}
+            viewport={{ once: false }}
+            className="text-[#1d2043] text-[20px] leading-[24px] xsm:text-[25px] xsm:leading-[30px] sm:!text-[31px] sm:!leading-[37px] my-3"
+          >
             User Interface Designer
-          </h3>
-          <p className="leading-[32px] text-[16px] xsm:text-lg font-light text-[#a3a5a7] my-4 max-w-[500px]">
+          </motion.h3>
+          <motion.p
+            variants={fadeInUp}
+            viewport={{ once: false }}
+            className="leading-[32px] text-[16px] xsm:text-lg font-light text-[#a3a5a7] my-4 max-w-[500px]"
+          >
             Hey are looking for designer to build your
             <b className="text-[#1d2043] font-medium">
               {" "}
               Brand and gorw your business ?{" "}
             </b>
             let&rsquo;s shake hands with me.
-          </p>
+          </motion.p>
 
-          <a
+          <motion.a
+            variants={fadeInUp}
+            viewport={{ once: false }}
             href="#about"
-            className="text-sm leading-[32px] text-white font-medium py-2 mt-6 mb-9 lg:my-12 rounded-lg text-center bg-[#df5646] inline-block w-[150px]"
+            className="group text-sm leading-[32px] text-white font-medium capitalize px-[22px] py-[10px] mt-6 mb-9 lg:my-12 text-center bg-[#df5646] relative inline-flex w-[150px] justify-between items-center rounded-[15px] before:transition-all before:duration-500 hover:before:left-[calc(100%-49px)] before:absolute before:content-[''] before:flex-none before:z-20  before:w-[44px] before:bg-white before:opacity-20 before:left-[5px] before:rounded-[10px] before:h-[calc(100%-10px)]"
           >
             Hire Me
-          </a>
+            <span className="group-hover:translate-x-[6px] transition-all duration-500">
+              <ArrowLongRightIcon className="w-5 h-5" />
+            </span>
+          </motion.a>
 
-          <ul className="flex space-x-3">
+          <motion.ul
+            variants={fadeInUp}
+            viewport={{ once: false }}
+            className="flex space-x-3"
+          >
             <li>
               <a
                 className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-[#DF5646] text-[#A3A5A7] bg-white p-2 block rounded"
@@ -96,10 +152,58 @@ const About = () => {
                 </svg>
               </a>
             </li>
-          </ul>
-        </div>
-        <div className="lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]">
-          <img src="./img/about.png" alt="about" />
+          </motion.ul>
+        </motion.div>
+        <div className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]">
+          {/* <img src="./img/about.png" alt="about" /> */}
+          <div className="relative overflow-hidden">
+            <motion.div
+              variants={zoomIn}
+              viewport={{ once: false }}
+              initial={"hidden"}
+              whileInView={"visible"}
+              className="absolute top-[20px] left-[28%] z-50"
+            >
+              <Image
+                width={72}
+                height={72}
+                layout="responsive"
+                alt="shape"
+                src="/img/shape-one.png"
+              />
+            </motion.div>
+
+            <motion.div
+              variants={zoomIn}
+              viewport={{ once: false }}
+              initial={"hidden"}
+              whileInView={"visible"}
+              className="absolute top-[20px] right-[30%] !max-w-[10%]"
+            >
+              <Image
+                width={40}
+                height={40}
+                alt="shape"
+                src="/img/shape-two.png"
+              />
+            </motion.div>
+
+            <motion.div
+              variants={imgReavel}
+              viewport={{ once: false }}
+              initial="hidden"
+              whileInView="animate"
+            >
+              <Image
+                width={600}
+                height={400}
+                layout="responsive"
+                src={"/img/about.png"}
+                alt="about"
+                className="m-auto !max-w-[600px]"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
