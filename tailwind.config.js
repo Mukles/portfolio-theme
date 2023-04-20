@@ -35,6 +35,12 @@ module.exports = {
         lg: "992px",
         xl: "1200px",
       },
+      transitionProperty: {
+        "transform-opacity": "transform, opacity",
+      },
+      transitionDuration: {
+        400: "400ms",
+      },
     },
   },
   plugins: [],

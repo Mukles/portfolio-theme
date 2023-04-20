@@ -139,10 +139,8 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
           animate={
             currentSectionIndex > i
               ? { y: "-100%" }
-              : direction === "increase"
-              ? currentSectionIndex === i
-                ? { y: ["100%", "0%"] }
-                : { y: 0 }
+              : direction === "increase" && currentSectionIndex === i
+              ? { y: ["100%", "0%"] }
               : { y: 0 }
           }
           transition={transition}
