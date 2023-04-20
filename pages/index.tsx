@@ -8,16 +8,6 @@ const transition = {
   ease: [0.55, 0.085, 0, 0.99],
 };
 
-const pagepilingVarients = {
-  increase: ({ direction, currentSectionIndex }: any) => {
-    return { y: currentSectionIndex + 1 };
-  },
-  decrease: (direction: any) => {
-    console.log({ direction });
-    return {};
-  },
-};
-
 interface Props {
   path: string;
   handleNavigation: (sectionName: string) => void;
@@ -129,7 +119,6 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
     <AnimatePresence custom={{ direction, currentSectionIndex }}>
       {sections.map((section, i) => (
         <motion.section
-          variants={pagepilingVarients}
           onTouchStart={handleOnTouchStart}
           onWheel={handleOnMouseWheel}
           id={`${section.sectionName}`}

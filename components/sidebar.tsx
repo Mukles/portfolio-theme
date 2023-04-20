@@ -42,7 +42,7 @@ const SideBar = ({ isOpen, toggle, handleNavigation }: Props) => {
       initial="close"
       exit="close"
       transition={{
-        duration: 0.5,
+        duration: 0.35,
         ease: "circOut",
       }}
       className="w-96 bg-white fixed top-0 right-0 h-full z-20 p-[65px] flex flex-col"
