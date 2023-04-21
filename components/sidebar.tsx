@@ -1,8 +1,8 @@
+import { fadeInUp } from "@/animations/animate";
 import navigationData from "@/utils/navigationData";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { fadeInUp } from "./Home";
 
 interface Props {
   handleNavigation: (sectionName: string) => void;

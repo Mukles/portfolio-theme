@@ -4,19 +4,11 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
+import { moveUpAndDown } from "@/animations/animate";
 import { motion } from "framer-motion";
-
-export const fadeInUp = {
-  hidden: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
+import { fadeInUp } from "./About";
+import SubTitle from "./sub-title";
+import TypedAnimation from "./typed-animation";
 
 const zoomIn = {
   hidden: {
@@ -59,44 +51,39 @@ const Home = () => {
         </a>
       </div>
 
-      <div className="flex flex-wrap overflow-hidden">
+      <div className="flex flex-wrap overflow-hidden lg:pt-[100px]">
         <motion.div
           initial={"hidden"}
           whileInView={"animate"}
           transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
-          className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px] lg:pt-[100px]"
+          className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px]"
         >
-          <motion.h3
-            variants={fadeInUp}
-            className="mb-4 before:content-[''] before:top-1/2 before:bg-[#707070] before:absolute before:h-[1px] before:w-[38px] before:left-0 relative"
-          >
-            <span className="text-sm leading-[14px] text-[#df5646] font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
-              About me
-            </span>
-          </motion.h3>
+          <SubTitle title="About Me" />
           <motion.h1
             variants={fadeInUp}
             className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-[#1d2043]"
           >
             Hi, <br /> I&rsquo;m{" "}
-            <span className="text-[#df5646]">Niharika</span>
+            <span className="text-[#df5646]">
+              <TypedAnimation text={"Niharika"} />
+            </span>
           </motion.h1>
           <motion.h3
             variants={fadeInUp}
             className="text-[#1d2043] text-[20px] leading-[24px] xsm:text-[25px] xsm:leading-[30px] sm:!text-[31px] sm:!leading-[37px] my-3"
           >
-            User Interface Designer
+            Expeert Front-End Devloper
           </motion.h3>
           <motion.p
             variants={fadeInUp}
             className="leading-[32px] text-[16px] xsm:text-lg font-light text-[#a3a5a7] my-4 max-w-[500px]"
           >
-            Hey are looking for designer to build your
+            Need a front-end expert to take
             <b className="text-[#1d2043] font-medium">
               {" "}
-              Brand and gorw your business ?{" "}
+              your website to the next level?{" "}
             </b>
-            let&rsquo;s shake hands with me.
+            let&rsquo;s work together to make your vision a reality.
           </motion.p>
 
           <motion.a
@@ -162,52 +149,81 @@ const Home = () => {
           whileInView={""}
           className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]"
         >
-          {/* <img src="./img/about.png" alt="about" /> */}
-          <div className="relative overflow-hidden">
+          <motion.div
+            className="relative overflow-hidden"
+            variants={imgReavel}
+            initial="hidden"
+            whileInView="animate"
+          >
             <motion.div
-              variants={zoomIn}
-              initial={"hidden"}
-              whileInView={"visible"}
-              className="absolute top-[20px] left-[28%] z-50"
+              variants={moveUpAndDown}
+              animate={"animate"}
+              className="absolute top-1/2 left-1 z-50"
             >
               <Image
-                width={72}
-                height={72}
-                layout="responsive"
+                width={10}
+                height={10}
+                src={"/img/shape/shape_03.svg"}
                 alt="shape"
-                src="/img/shape-one.png"
+              />
+            </motion.div>
+            <motion.div
+              variants={moveUpAndDown}
+              animate={"animate"}
+              className="absolute top-[30%] right-[10%] z-50"
+            >
+              <Image
+                width={10}
+                height={10}
+                src={"/img/shape/shape_04.svg"}
+                alt="shape"
+              />
+            </motion.div>
+            <motion.div
+              variants={moveUpAndDown}
+              animate={"animate"}
+              className="absolute top-3/4 right-2 z-50"
+            >
+              <Image
+                width={10}
+                height={10}
+                src={"/img/shape/shape_05.svg"}
+                alt="shape"
+              />
+            </motion.div>
+            <motion.div
+              variants={moveUpAndDown}
+              animate={"animate"}
+              className="absolute top-[30%] left-[60px] z-50"
+            >
+              <Image
+                width={10}
+                height={10}
+                src={"/img/shape/shape_06.svg"}
+                alt="shape"
               />
             </motion.div>
 
-            <motion.div
-              variants={zoomIn}
-              initial={"hidden"}
-              whileInView={"visible"}
-              className="absolute top-[20px] right-[30%] !max-w-[10%]"
-            >
+            <div className="absolute w-4/5 h-auto top-[40%] left-[50%] translate-x-[-50%] -z-10 ">
               <Image
-                width={40}
-                height={40}
+                width={600}
+                height={600}
                 alt="shape"
-                src="/img/shape-two.png"
+                src={"/img/shape/shape_01.svg"}
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={imgReavel}
-              initial="hidden"
-              whileInView="animate"
-            >
+            <div className="relative">
               <Image
                 width={600}
                 height={400}
                 layout="responsive"
-                src={"/img/about.png"}
+                src={"/img/me.png"}
                 alt="about"
-                className="m-auto !max-w-[600px]"
+                className="m-auto !max-w-[600px] z-20"
               />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>

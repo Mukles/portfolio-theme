@@ -14,7 +14,7 @@ interface Props {
 }
 
 // Define the Experiment component
-const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
+const Index = ({ path, handleNavigation }: Props): JSX.Element => {
   // Initialize variables for tracking the current section index, scroll position, and whether or not the user can currently scroll
   const index = sections.findIndex((section) => section.sectionName === path);
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
@@ -114,17 +114,18 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
 
   const direction: string =
     currentSectionIndex > prev ? "increase" : "decrease";
-  console.log({ direction });
   return (
-    <AnimatePresence custom={{ direction, currentSectionIndex }}>
+    <AnimatePresence>
       {sections.map((section, i) => (
         <motion.section
           onTouchStart={handleOnTouchStart}
           onWheel={handleOnMouseWheel}
           id={`${section.sectionName}`}
-          style={{ zIndex: sections.length - i }}
+          style={{
+            zIndex: sections.length - i,
+            background: section.background,
+          }}
           key={section.id}
-          custom={{ direction, currentSectionIndex }}
           animate={
             currentSectionIndex > i
               ? { y: "-100%" }
@@ -135,7 +136,7 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}
-          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white py-[185px] lg:py-[100px]`}
+          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white pt-[150px] lg:pt-[85px] lg:ptx-[100px]`}
         >
           {section.component}
         </motion.section>
@@ -144,4 +145,4 @@ const Experiment = ({ path, handleNavigation }: Props): JSX.Element => {
   );
 };
 
-export default Experiment;
+export default Index;

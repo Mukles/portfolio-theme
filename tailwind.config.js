@@ -13,7 +13,6 @@ module.exports = {
   theme: {
     container: {
       center: true,
-
       padding: {
         DEFAULT: "13px",
         lg: "0",

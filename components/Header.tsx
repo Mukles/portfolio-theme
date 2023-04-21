@@ -1,19 +1,9 @@
+import { overlay } from "@/animations/animate";
 import { ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import Link from "next/link";
 import { MenuToggle } from "./menu-toggle";
 import SideBar from "./sidebar";
-
-const overlay = {
-  open: {
-    background: "rgba(0, 0, 0, 0.65",
-    opacity: 1,
-  },
-  closed: {
-    background: "rgb(255, 255, 225, 1",
-    opacity: 0,
-  },
-};
 
 interface Props {
   handleNavigation: (sectionName: string) => void;
