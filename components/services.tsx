@@ -21,7 +21,7 @@ const imgReavel = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.5, duration: 0.5, ease: "circOut" },
+    transition: { delay: 0.8, duration: 0.8, ease: "circOut" },
   },
 };
 
@@ -29,25 +29,25 @@ const Services = () => {
   return (
     <div className="sm:container overflow-hidden">
       <div className="flex flex-wrap overflow-hidden pb-[100px]">
-        <motion.div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] w-full lg:max-w-[58%] px-[15px]">
+        <div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] w-full lg:max-w-[58%] px-[15px]">
           <SubTitle className={"mb-[74px]"} title="Services" />
 
-          <div className="relative overflow-hidden max-w-[580px]">
-            <motion.div
-              variants={imgReavel}
-              initial="hidden"
-              whileInView="animate"
-              className="relative"
-            >
+          <motion.div
+            variants={imgReavel}
+            initial="hidden"
+            animate="animate"
+            className="relative overflow-hidden max-w-[580px]"
+          >
+            <div className="relative">
               <Image
                 width={600}
                 height={300}
                 src={"/img/services.png"}
                 alt="about"
               />
-            </motion.div>
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
 
         <motion.div
           initial={"hidden"}
@@ -81,7 +81,7 @@ const Services = () => {
                 key={i}
                 className="flex items-center space-x-3 basis-1/2 max-w-[50%] py-5"
               >
-                <div className="w-[44px] h-[44px] rounded-full bg-[#DF5646] flex items-center justify-center">
+                <div className="w-[44px] h-[44px] rounded-full bg-[#DF5646] flex items-center justify-center flex-none">
                   <Image
                     src={"/img/service-icon1.png"}
                     alt="service-icon"
