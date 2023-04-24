@@ -1,5 +1,5 @@
 import { sections } from "@/utils/component-list";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 // Define a transition object to apply to all motion sections
@@ -114,8 +114,13 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
 
   const direction: string =
     currentSectionIndex > prev ? "increase" : "decrease";
+  const height = (sections.length * 60).toString();
+  const progressBarStyles = `${
+    ((currentSectionIndex + 1) / sections.length) * 100
+  }%`;
+
   return (
-    <AnimatePresence>
+    <>
       {sections.map((section, i) => (
         <motion.section
           onTouchStart={handleOnTouchStart}
@@ -136,12 +141,18 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}
-          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white pt-[150px] lg:pt-[85px] lg:ptx-[100px]`}
+          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white py-[150px]  lg:py-[100px]`}
         >
           {section.component}
         </motion.section>
       ))}
-    </AnimatePresence>
+
+      <div
+        className={`fixed w-0.5 bg-[#D2D2D2] top-1/2 -translate-y-1/2 h-${
+          sections.length * 60
+        }px max-h-[400px]`}
+      ></div>
+    </>
   );
 };
 

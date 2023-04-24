@@ -28,7 +28,7 @@ const imgReavel = {
 const Services = () => {
   return (
     <div className="sm:container overflow-hidden">
-      <div className="flex flex-wrap overflow-hidden pb-[100px]">
+      <div className="flex flex-wrap overflow-hidden">
         <div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] w-full lg:max-w-[58%] px-[15px]">
           <SubTitle className={"mb-[74px]"} title="Services" />
 
@@ -57,10 +57,10 @@ const Services = () => {
         >
           <motion.h1
             variants={fadeInUp}
-            className="font-title text-[28px] md:leading-[66px] sm:text-[35px] sm:leading-[47px] font-bold text-[#1d2043]"
+            className="font-title text-[28px] md:leading-[66px] sm:text-[35px] sm:leading-[47px] font-bold text-heading"
           >
             What{" "}
-            <span className="text-[#df5646]">
+            <span className="text-primary">
               <TypedAnimation text={"Services"} />
             </span>{" "}
             I Provde To My Clients In Here.
@@ -68,20 +68,20 @@ const Services = () => {
 
           <motion.p
             variants={fadeInUp}
-            className="leading-[32px] text-[16px] font-light text-[#a3a5a7] my-4"
+            className="leading-[32px] text-[16px] font-light text-base my-4"
           >
             I always want to be able to meet the goals of my clients, I value my
             services as a designer through my work. You may like my
-            <b className="text-[#1d2043] font-medium"> services.</b>
+            <b className="text-heading font-medium"> services.</b>
           </motion.p>
 
           <motion.ul variants={fadeInUp} className="flex flex-wrap mt-9">
             {[...Array(4)].map((item, i) => (
               <li
                 key={i}
-                className="flex items-center space-x-3 basis-1/2 max-w-[50%] py-5"
+                className="flex items-center space-x-3 lg:basis-1/2 basis-full max-w-[100%] lg:max-w-[50%] py-5"
               >
-                <div className="w-[44px] h-[44px] rounded-full bg-[#DF5646] flex items-center justify-center flex-none">
+                <div className="w-[44px] h-[44px] rounded-full bg-primary flex items-center justify-center flex-none">
                   <Image
                     src={"/img/service-icon1.png"}
                     alt="service-icon"
@@ -89,7 +89,7 @@ const Services = () => {
                     height={25}
                   />
                 </div>
-                <h4 className="text-[20px] leading-[24px] text-[#1d2043] font-medium px-1">
+                <h4 className="text-[20px] leading-[24px] text-heading font-medium px-1">
                   App Design
                 </h4>
               </li>

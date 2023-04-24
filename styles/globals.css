@@ -19,6 +19,13 @@
       transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
         opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
+
+    .section-title {
+      @apply text-[28px] leading-[38px] xm:text-[30px] xm:leading-[41px] sm:text-[35px] sm:leading-[47px] font-bold text-heading;
+    }
+    .section-description {
+      @apply text-[16px] leading-[32px] text-[];
+    }
   }
 }
 

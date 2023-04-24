@@ -8,7 +8,6 @@ import { moveUpAndDown } from "@/animations/animate";
 import { motion } from "framer-motion";
 import { fadeInUp } from "./About";
 import SubTitle from "./sub-title";
-import TypedAnimation from "./typed-animation";
 
 const zoomIn = {
   hidden: {
@@ -23,11 +22,11 @@ const zoomIn = {
 };
 
 const imgReavel = {
-  hidden: { y: 200, opacity: 0 },
+  hidden: { y: 500, opacity: 0 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.5, duration: 0.5, ease: "circOut" },
+    transition: { duration: 1, ease: "circOut" },
   },
 };
 
@@ -55,31 +54,28 @@ const Home = () => {
         <motion.div
           initial={"hidden"}
           whileInView={"animate"}
-          transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
+          transition={{ staggerChildren: 0.15 }}
           className="lg:shrink-0 lg:grow-0 lg:basis-[42%] lg:max-w-[42%] px-[15px]"
         >
           <SubTitle title="About Me" />
           <motion.h1
             variants={fadeInUp}
-            className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-[#1d2043]"
+            className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-heading"
           >
-            Hi, <br /> I&rsquo;m{" "}
-            <span className="text-[#df5646]">
-              <TypedAnimation text={"Niharika"} />
-            </span>
+            Hi, <br /> I&rsquo;m <span className="text-primary">Niharika</span>
           </motion.h1>
           <motion.h3
             variants={fadeInUp}
-            className="text-[#1d2043] text-[20px] leading-[24px] xsm:text-[25px] xsm:leading-[30px] sm:!text-[31px] sm:!leading-[37px] my-3"
+            className="text-heading text-[20px] leading-[24px] xm:text-[25px] xm:leading-[30px] sm:text-[31px] sm:leading-[37px] my-3"
           >
             Expeert Front-End Devloper
           </motion.h3>
           <motion.p
             variants={fadeInUp}
-            className="leading-[32px] text-[16px] xsm:text-lg font-light text-[#a3a5a7] my-4 max-w-[500px]"
+            className="leading-[32px] text-[16px] xm:text-lg font-light text-base my-4 max-w-[500px]"
           >
             Need a front-end expert to take
-            <b className="text-[#1d2043] font-medium">
+            <b className="text-heading font-medium">
               {" "}
               your website to the next level?{" "}
             </b>
@@ -89,7 +85,7 @@ const Home = () => {
           <motion.a
             variants={fadeInUp}
             href="#about"
-            className="group text-sm leading-[32px] text-white font-medium capitalize px-[22px] py-[10px] mt-6 mb-9 lg:my-12 text-center bg-[#df5646] relative inline-flex w-[150px] justify-between items-center rounded-[15px] before:transition-all before:duration-500 hover:before:left-[calc(100%-49px)] before:absolute before:content-[''] before:flex-none before:z-20  before:w-[44px] before:bg-white before:opacity-20 before:left-[5px] before:rounded-[10px] before:h-[calc(100%-10px)]"
+            className="group text-sm leading-[32px] text-white font-medium capitalize px-[22px] py-[10px] mt-6 mb-9 lg:my-12 text-center bg-primary relative inline-flex w-[150px] justify-between items-center rounded-[15px] before:transition-all before:duration-500 hover:before:left-[calc(100%-49px)] before:absolute before:content-[''] before:flex-none before:z-20  before:w-[44px] before:bg-white before:opacity-20 before:left-[5px] before:rounded-[10px] before:h-[calc(100%-10px)]"
           >
             Hire Me
             <span className="group-hover:translate-x-[6px] transition-all duration-500">
@@ -100,7 +96,7 @@ const Home = () => {
           <motion.ul variants={fadeInUp} className="flex space-x-3">
             <li>
               <a
-                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-[#DF5646] text-[#A3A5A7] bg-white p-2 block rounded"
+                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-primary text-base bg-white p-2 block rounded"
                 href=""
               >
                 <svg
@@ -115,7 +111,7 @@ const Home = () => {
             </li>
             <li>
               <a
-                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-[#DF5646] text-[#A3A5A7] bg-white p-2 block rounded"
+                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-primary text-base bg-white p-2 block rounded"
                 href=""
               >
                 <svg
@@ -130,7 +126,7 @@ const Home = () => {
             </li>
             <li>
               <a
-                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-[#DF5646] text-[#A3A5A7] bg-white p-2 block rounded"
+                className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-primary text-base bg-white p-2 block rounded"
                 href=""
               >
                 <svg
@@ -145,10 +141,7 @@ const Home = () => {
             </li>
           </motion.ul>
         </motion.div>
-        <motion.div
-          whileInView={""}
-          className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-[100px] pt-[50px]"
-        >
+        <div className="max-width-[650px] w-full lg:basis-[58%] lg:max-w-[58%] px-[15px] lg:pt-0 pt-[50px]">
           <motion.div
             className="relative overflow-hidden"
             variants={imgReavel}
@@ -218,13 +211,12 @@ const Home = () => {
                 width={600}
                 height={400}
                 layout="responsive"
-                src={"/img/me.png"}
+                src={"/img/about.png"}
                 alt="about"
-                className="m-auto !max-w-[600px] z-20"
               />
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

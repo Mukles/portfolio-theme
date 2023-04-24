@@ -15,7 +15,7 @@ const SubTitle = ({ title, className = "mb-4" }: Props) => {
         className
       }
     >
-      <span className="text-sm leading-[14px] text-[#df5646] font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
+      <span className="text-sm leading-[14px] text-primary font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
         {title}
       </span>
     </motion.h3>

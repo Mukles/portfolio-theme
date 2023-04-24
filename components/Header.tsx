@@ -13,8 +13,8 @@ const Header = ({ handleNavigation }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
-    <header className="shadow-[0_0_30px_0px_rgba(0,0,0,0.1)] bg-[#FAFAFA] z-20 fixed top-0 left-0 w-full h-[85px] xl:static">
-      <div className="fixed top-[25px] left-[25px] xl:top-[35px] xl:left-[50px] z-20 hover:text-[#DF5646]">
+    <header className="shadow-[0_0_30px_0px_rgba(0,0,0,0.1)] bg-light z-20 fixed top-0 left-0 w-full h-[85px] xl:static">
+      <div className="fixed top-[25px] left-[25px] xl:top-[35px] xl:left-[50px] z-20 hover:text-primary">
         <Link href={"/"}>
           <b>It&rsquo;s </b>me
         </Link>

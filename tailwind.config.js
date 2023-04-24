@@ -19,6 +19,12 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        base: "#A3A5A7",
+        heading: "#1D2043",
+        primary: "#DF5646",
+        light: "#FAFAFA",
+      },
       fontFamily: {
         sans: ["Poppins", "Open Sans", ...defaultTheme.fontFamily.sans],
         title: [
@@ -28,7 +34,7 @@ module.exports = {
         ],
       },
       screens: {
-        xsm: "376px",
+        xm: "376px",
         sm: "576px",
         md: "768px",
         lg: "992px",

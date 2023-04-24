@@ -4,11 +4,15 @@ interface Props {
   text: string;
 }
 
-const TypedVarient = {
+const characterAnimation = {
   hidden: {
     opacity: 0,
+    y: 50,
   },
-  animate: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
 };
 
 const TypedAnimation = ({ text }: Props) => {
@@ -16,10 +20,15 @@ const TypedAnimation = ({ text }: Props) => {
     <>
       {text.split("").map((item, i) => (
         <motion.span
-          variants={TypedVarient}
+          aria-hidden="true"
+          variants={characterAnimation}
           initial="hidden"
-          animate={"animate"}
-          transition={{ delay: i * 0.5 }}
+          whileInView={"visible"}
+          transition={{
+            delay: 1 + 0.1 * i,
+            duration: 1,
+            ease: [0.2, 0.65, 0.3, 0.9],
+          }}
           key={i}
         >
           {item}
