@@ -31,3 +31,12 @@ export const moveUpAndDown = {
     },
   },
 };
+
+export const imgReavel = {
+  hidden: { y: 200, opacity: 0 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.8, duration: 0.8, ease: "circOut" },
+  },
+};

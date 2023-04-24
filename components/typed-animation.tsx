@@ -18,8 +18,10 @@ const characterAnimation = {
 const TypedAnimation = ({ text }: Props) => {
   return (
     <>
+      {"  "}
       {text.split("").map((item, i) => (
         <motion.span
+          className="text-primary"
           aria-hidden="true"
           variants={characterAnimation}
           initial="hidden"
@@ -33,7 +35,7 @@ const TypedAnimation = ({ text }: Props) => {
         >
           {item}
         </motion.span>
-      ))}
+      ))}{" "}
     </>
   );
 };
