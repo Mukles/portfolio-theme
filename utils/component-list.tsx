@@ -1,4 +1,4 @@
-import Home from "@/components/Home";
+import About from "@/components/About";
 import Services from "@/components/services";
 import Skills from "@/components/skills";
 
@@ -12,7 +12,7 @@ interface Section {
 
 // Define the sections and their associated components and section names
 export const sections: Section[] = [
-  { id: 1, component: <Home />, sectionName: "about", background: "#fff" },
+  { id: 1, component: <About />, sectionName: "about", background: "#fff" },
   {
     id: 2,
     component: <Services />,

@@ -40,3 +40,15 @@ export const imgReavel = {
     transition: { delay: 0.8, duration: 0.8, ease: "circOut" },
   },
 };
+
+export const zoomIn = {
+  hidden: {
+    scale: 0,
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    scale: [1, 1.2, 1, 1.1, 1],
+    transition: { delay: 0.5, duration: 0.8, ease: "easeIn" },
+  },
+};

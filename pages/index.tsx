@@ -141,7 +141,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
           transition={transition}
           onAnimationStart={() => setUserCanScroll(false)}
           onAnimationComplete={() => setUserCanScroll(true)}
-          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white py-[150px]  lg:py-[100px]`}
+          className={`fixed top-0 left-0 w-full h-full overflow-y-auto bg-white pt-[185px] pb-[100px] lg:pt-[100px]`}
         >
           {section.component}
         </motion.section>
