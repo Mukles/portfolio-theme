@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Resume from "@/components/resume";
 import Services from "@/components/services";
 import Skills from "@/components/skills";
 
@@ -23,6 +24,12 @@ export const sections: Section[] = [
     id: 2,
     component: <Skills />,
     sectionName: "skills",
+    background: "#fff",
+  },
+  {
+    id: 3,
+    component: <Resume />,
+    sectionName: "resume",
     background: "#fff",
   },
 ];

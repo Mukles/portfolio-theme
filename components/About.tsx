@@ -18,7 +18,7 @@ const imgReavel = {
 
 const About = () => {
   return (
-    <div className="sm:container overflow-hidden">
+    <div className="container">
       <div className="hidden mx-auto absolute top-[35px] left-1/2 w-1/2 translate-x-[-50%] lg:flex justify-between">
         <ul className="flex">
           <li className="pr-10 mr-10 after:[/] ">
