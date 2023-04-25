@@ -1,5 +1,5 @@
 import { sections } from "@/utils/component-list";
-import { motion } from "framer-motion";
+import { motion, useWillChange } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 // Define a transition object to apply to all motion sections
@@ -16,6 +16,7 @@ interface Props {
 // Define the Experiment component
 const Index = ({ path, handleNavigation }: Props): JSX.Element => {
   // Initialize variables for tracking the current section index, scroll position, and whether or not the user can currently scroll
+  const willChange = useWillChange();
   const index = sections.findIndex((section) => section.sectionName === path);
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(
     index >= 0 ? index : 0
@@ -114,10 +115,8 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
 
   const direction: string =
     currentSectionIndex > prev ? "increase" : "decrease";
-  const height = (sections.length * 60).toString();
-  const progressBarStyles = `${
-    ((currentSectionIndex + 1) / sections.length) * 100
-  }%`;
+  const progressBar = ((currentSectionIndex + 1) / sections.length) * 100;
+  const height = `${progressBar}%`;
 
   return (
     <>
@@ -147,11 +146,15 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
         </motion.section>
       ))}
 
-      <div
-        className={`fixed w-0.5 bg-[#D2D2D2] top-1/2 -translate-y-1/2 h-${
-          sections.length * 60
-        }px max-h-[400px]`}
-      ></div>
+      <ul
+        className={`fixed w-0.5 bg-[#D2D2D2] z-10 right-3 rounded-full overflow-hidden lg:right-5 top-1/2 h-full -translate-y-1/2 max-h-[250px]`}
+      >
+        <motion.span
+          animate={{ height }}
+          style={{ willChange }}
+          className="w-full bg-primary block"
+        ></motion.span>
+      </ul>
     </>
   );
 };
