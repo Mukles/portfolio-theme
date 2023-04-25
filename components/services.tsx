@@ -1,33 +1,12 @@
+import { fadeInUp, imgReavel } from "@/animations/animate";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeInUp } from "./About";
 import SubTitle from "./sub-title";
 import TypedAnimation from "./typed-animation";
 
-const zoomIn = {
-  hidden: {
-    scale: 0,
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-    scale: [1, 1.2, 1, 1.1, 1],
-    transition: { delay: 0.5, duration: 0.8, ease: "easeIn" },
-  },
-};
-
-const imgReavel = {
-  hidden: { y: 200, opacity: 0 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.8, duration: 0.8, ease: "circOut" },
-  },
-};
-
 const Services = () => {
   return (
-    <div className="sm:container overflow-hidden">
+    <div className="sm:container">
       <div className="flex flex-wrap items-center">
         <div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] w-full lg:max-w-[58%] px-[15px]">
           <SubTitle className={"mb-[73px]"} title="Services" />

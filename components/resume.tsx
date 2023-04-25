@@ -2,7 +2,7 @@ import SubTitle from "./sub-title";
 
 const Resume = () => {
   return (
-    <div className="sm:container overflow-hidden">
+    <div className="sm:container">
       <div className="flex flex-wrap">
         <div className="w-full lg:grow-0 lg:shrink-0 lg:basis-1/2 lg:max-w-[50%] px-[15px]">
           <div>

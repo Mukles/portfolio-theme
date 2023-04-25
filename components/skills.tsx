@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import SubTitle from "./sub-title";
 import TypedAnimation from "./typed-animation";
 
 const Skills = () => {
   return (
-    <div className="sm:container overflow-hidden">
+    <div className="sm:container">
       <div className="flex flex-wrap items-center">
         <div className="lg:grow-0 lg:shrink-0 lg:basis-[42%] lg:max-w-[42%] px-[15px]">
           <SubTitle className={"mb-[45px]"} title="Skills" />
@@ -23,14 +24,24 @@ const Skills = () => {
               {[...Array(4)].map((item, i) => (
                 <div key={i}>
                   <div className="progress-label flex justify-between mb-1">
-                    <p className="text-sm leading-[32px] text-heading font-medium">
+                    <h3 className="text-sm leading-[32px] text-heading font-medium">
                       App Design
-                    </p>
-                    <p className="text-[10px] leading-[32px] text-base font-light">
+                    </h3>
+                    <h3 className="text-[10px] leading-[32px] text-base font-light">
                       78%
-                    </p>
+                    </h3>
                   </div>
-                  <div className="progress-bar overflow-hidden bg-[#e9eeef] h-2 rounded-full relative after:content-[''] after:absolute after:left-0 after:top-0 after:h-full after:w-1/2 after:bg-[#75A9D6]"></div>
+                  <div className="progress-bar overflow-hidden bg-[#e9eeef] h-2 rounded-full relative">
+                    <motion.span
+                      className="bg-[#75A9D6] absolute left-0 top-0 h-full"
+                      whileInView={{ width: "78%" }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 80,
+                        damping: 20,
+                      }}
+                    ></motion.span>
+                  </div>
                 </div>
               ))}
             </div>
