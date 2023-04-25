@@ -9,19 +9,21 @@ const Services = () => {
     <div className="sm:container">
       <div className="flex flex-wrap items-center">
         <div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] w-full lg:max-w-[58%] px-[15px]">
-          <SubTitle className={"mb-[73px]"} title="Services" />
-          <motion.div
-            variants={imgReavel}
-            initial="hidden"
-            animate="animate"
-            className="relative max-w-[600px]"
-          >
-            <Image
-              width={576}
-              height={539}
-              src={"/img/services.png"}
-              alt="about"
-            />
+          <motion.div>
+            <SubTitle className={"mb-[73px]"} title="Services" />
+            <motion.div
+              variants={imgReavel}
+              initial="hidden"
+              whileInView={"animate"}
+              className="max-w-[600px] relative"
+            >
+              <Image
+                width={576}
+                height={539}
+                src={"/img/services.png"}
+                alt="about"
+              />
+            </motion.div>
           </motion.div>
         </div>
 
@@ -31,7 +33,7 @@ const Services = () => {
           transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
           className="lg:shrink-0 lg:grow-0 lg:basis-[41%] lg:max-w-[41%] max-w-[450px] w-full px-[15px]"
         >
-          <div className="max-w-[450px] ml-auto pt-[100px]">
+          <div className="max-w-[450px] ml-auto pt-[50px] lg:pt-[100px]">
             <motion.h1 variants={fadeInUp} className="section-title">
               What
               <TypedAnimation text={"Services"} />I Provde To My Clients In

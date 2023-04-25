@@ -6,7 +6,16 @@ export const fadeInUp = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8 },
+    transition: { type: "spring", stiffness: 80, damping: 30 },
+  },
+};
+
+export const imgReavel = {
+  hidden: { y: 100, opacity: 0 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.8, type: "spring", tiffness: 50, damping: 20 },
   },
 };
 
@@ -29,15 +38,6 @@ export const moveUpAndDown = {
       ease: "linear",
       repeat: Infinity,
     },
-  },
-};
-
-export const imgReavel = {
-  hidden: { y: 200, opacity: 0 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.8, duration: 0.8, ease: "circOut" },
   },
 };
 
