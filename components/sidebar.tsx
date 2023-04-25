@@ -1,6 +1,6 @@
 import { fadeInUp } from "@/animations/animate";
 import navigationData from "@/utils/navigationData";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
@@ -8,6 +8,7 @@ interface Props {
   handleNavigation: (sectionName: string) => void;
   isOpen: boolean;
   toggle: () => void;
+  path: string;
 }
 
 const variants = {
@@ -15,7 +16,8 @@ const variants = {
   close: { x: "100%" },
 };
 
-const SideBar = ({ isOpen, toggle, handleNavigation }: Props) => {
+const SideBar = ({ isOpen, toggle, handleNavigation, path }: Props) => {
+  console.log({ path });
   const sideBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -87,32 +89,25 @@ const SideBar = ({ isOpen, toggle, handleNavigation }: Props) => {
             <li key={id}>
               <Link
                 onClick={() => handleNavigation(href)}
-                className="text-[18px] leading-[32px] font-bold text-[#1f2044] bg-[#fcf1e7]"
+                className={`text-[18px] leading-[32px] font-bold text-[#1f2044] ${
+                  path === `#${href}` ? "bg-[#fcf1e7]" : ""
+                }`}
                 href={`#${href}`}
               >
                 {label}
-              </Link>
-            </li>
-          ))}
-          {navigationData.map(({ label, id, href }) => (
-            <li key={id}>
-              <Link
-                onClick={() => handleNavigation(href)}
-                className="text-[18px] leading-[32px] font-bold text-[#1f2044] bg-[#fcf1e7]"
-                href={`#${href}`}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-          {navigationData.map(({ label, id, href }) => (
-            <li key={id}>
-              <Link
-                onClick={() => handleNavigation(href)}
-                className="text-[18px] leading-[32px] font-bold text-[#1f2044] bg-[#fcf1e7]"
-                href={`#${href}`}
-              >
-                {label}
+                <AnimatePresence mode="wait">
+                  {path === `#${href}` && (
+                    <motion.span
+                      className="inline-block"
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 100, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      .
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </Link>
             </li>
           ))}

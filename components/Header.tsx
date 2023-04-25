@@ -7,9 +7,10 @@ import SideBar from "./sidebar";
 
 interface Props {
   handleNavigation: (sectionName: string) => void;
+  path: string;
 }
 
-const Header = ({ handleNavigation }: Props) => {
+const Header = ({ handleNavigation, path }: Props) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
 
   return (
@@ -42,6 +43,7 @@ const Header = ({ handleNavigation }: Props) => {
               className="fixed top-0 left-0 w-full h-full z-20"
             >
               <SideBar
+                path={path}
                 handleNavigation={handleNavigation}
                 isOpen={isOpen}
                 toggle={() => toggleOpen()}

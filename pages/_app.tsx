@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <CursorAnimation />
-      <Header handleNavigation={handleNavigation} />
+      <Header path={path} handleNavigation={handleNavigation} />
       <Component
         handleNavigation={handleNavigation}
         path={path}
