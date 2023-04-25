@@ -1,5 +1,5 @@
+import { fadeInUp } from "@/animations/animate";
 import { motion } from "framer-motion";
-import { fadeInUp } from "./About";
 
 interface Props {
   title: string;
