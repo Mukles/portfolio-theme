@@ -67,6 +67,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     const currentScrollPosition = currentSectionElement.scrollTop;
     const sectionHeight =
       currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
+    console.log({ sectionHeight, currentScrollPosition });
     const isScrollingUp =
       previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
 
@@ -100,15 +101,16 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     // Store the initial touch position
     const startY = event.touches[0].clientY;
 
-    const handleOnTouchMove = (moveEvent: TouchEvent) => {
+    const handleOnTouchMove = (endEvent: TouchEvent) => {
+      const endY = endEvent.changedTouches[0].clientY;
       // Calculate the change in touch position
-      const deltaY = moveEvent.touches[0].clientY - startY;
+      const deltaY = endY - startY;
       // Handle the scroll based on the change in touch position
       hanldeScroll(deltaY);
     };
 
     // Add the touch move event listener
-    document.addEventListener("touchmove", handleOnTouchMove, {
+    document.addEventListener("touchend", handleOnTouchMove, {
       passive: false,
     });
   };
