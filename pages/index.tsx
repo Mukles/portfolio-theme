@@ -67,7 +67,6 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     const currentScrollPosition = currentSectionElement.scrollTop;
     const sectionHeight =
       currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
-    console.log({ sectionHeight, currentScrollPosition });
     const isScrollingUp =
       previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
 
