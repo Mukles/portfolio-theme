@@ -151,6 +151,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
       >
         <motion.span
           animate={{ height }}
+          transition={{ duration: 0.6, ease: "circOut" }}
           style={{ willChange }}
           className="w-full bg-primary block"
         ></motion.span>
