@@ -67,6 +67,8 @@ const Resume = () => {
           </div>
 
           <motion.div
+            initial={"hidden"}
+            whileInView={"animate"}
             transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
             className="max-w-[485px] mt-11"
           >

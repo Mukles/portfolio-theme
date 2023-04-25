@@ -147,7 +147,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
       ))}
 
       <ul
-        className={`fixed w-[3px] bg-[#D2D2D2] z-10 right-3 rounded-full overflow-hidden lg:right-5 top-1/2 h-full -translate-y-1/2 max-h-[250px]`}
+        className={`fixed w-0.5 bg-[#D2D2D2] z-10 right-3 rounded-full overflow-hidden lg:right-5 top-1/2 h-full -translate-y-1/2 max-h-[250px]`}
       >
         <motion.span
           animate={{ height }}
