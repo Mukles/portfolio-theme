@@ -72,6 +72,8 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     const isScrollingUp =
       previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
 
+    console.log({ isScrollingUp });
+
     // Update the scroll position for the next event
     previousScrollPositionRef.current = currentSectionElement.scrollTop;
 
@@ -79,6 +81,8 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     const bottomTrigger =
       isScrollingUp === "down" && sectionHeight === currentScrollPosition;
     const upTrigger = isScrollingUp === "up" && currentScrollPosition === 0;
+
+    console.log({ bottomTrigger, upTrigger });
 
     // Move to the next section if the user is scrolling down and has reached the bottom of the current section
     if (
