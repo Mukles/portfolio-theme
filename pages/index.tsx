@@ -65,10 +65,16 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
 
     // Calculate the current scroll position, total height of the section, and whether or not the user is scrolling up or down
     const currentScrollPosition = currentSectionElement.scrollTop;
-    console.log({ currentScrollPosition });
 
     const sectionHeight =
       currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
+    console.log({
+      currentScrollPosition,
+      sectionHeight,
+      sh: currentSectionElement.scrollHeight,
+      ch: currentSectionElement.clientHeight,
+    });
+
     const isScrollingUp =
       previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
 
