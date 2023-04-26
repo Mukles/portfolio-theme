@@ -86,6 +86,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
       sh: currentSectionElement.scrollHeight,
       ch: currentSectionElement.clientHeight,
       currentScrollPosition,
+      sectionHeight,
       previousScrollPosition,
       isScrollingUp,
       bottomTrigger,
