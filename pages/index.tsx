@@ -93,8 +93,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     // Move to the next section if the user is scrolling down and has reached the bottom of the current section
     if (
       deltaY < 0 &&
-      currentScrollPosition === sectionHeight &&
-      bottomTrigger &&
+      currentScrollPosition >= sectionHeight &&
       userCanScroll &&
       currentSectionIndex < sections.length - 1
     ) {
