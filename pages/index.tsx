@@ -65,6 +65,8 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
 
     // Calculate the current scroll position, total height of the section, and whether or not the user is scrolling up or down
     const currentScrollPosition = currentSectionElement.scrollTop;
+    console.log({ currentScrollPosition });
+
     const sectionHeight =
       currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
     const isScrollingUp =
@@ -82,6 +84,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     if (
       deltaY < 0 &&
       currentScrollPosition === sectionHeight &&
+      bottomTrigger &&
       userCanScroll &&
       currentSectionIndex < sections.length - 1
     ) {
@@ -109,9 +112,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     };
 
     // Add the touch move event listener
-    document.addEventListener("touchend", handleOnTouchMove, {
-      passive: false,
-    });
+    document.addEventListener("touchend", handleOnTouchMove);
   };
 
   const direction: string =
