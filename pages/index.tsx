@@ -70,18 +70,16 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
       currentSectionElement.scrollHeight - currentSectionElement.clientHeight;
     console.log({
       currentScrollPosition,
-      sectionHeight,
-      sh: currentSectionElement.scrollHeight,
-      ch: currentSectionElement.clientHeight,
+      prev: previousScrollPositionRef.current,
     });
 
     const isScrollingUp =
-      previousScrollPositionRef.current < currentScrollPosition ? "down" : "up";
+      previousScrollPositionRef.current > currentScrollPosition ||
+      previousScrollPositionRef.current === 0
+        ? "up"
+        : "down";
 
     console.log({ isScrollingUp });
-
-    // Update the scroll position for the next event
-    previousScrollPositionRef.current = currentSectionElement.scrollTop;
 
     // Define the triggers for when to move to the next section
     const bottomTrigger =
@@ -93,8 +91,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     // Move to the next section if the user is scrolling down and has reached the bottom of the current section
     if (
       deltaY < 0 &&
-      currentScrollPosition > previousScrollPositionRef.current &&
-      currentScrollPosition >= sectionHeight &&
+      bottomTrigger &&
       userCanScroll &&
       currentSectionIndex < sections.length - 1
     ) {
@@ -103,16 +100,13 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     }
 
     // Move to the previous section if the user is scrolling up and has reached the top of the current section
-    if (
-      deltaY > 0 &&
-      currentScrollPosition < previousScrollPositionRef.current &&
-      currentScrollPosition === 0 &&
-      userCanScroll &&
-      currentSectionIndex > 0
-    ) {
+    if (deltaY > 0 && upTrigger && userCanScroll && currentSectionIndex > 0) {
       setCurrentSectionIndex(currentSectionIndex - 1);
       handleNavigation(sections[currentSectionIndex - 1].sectionName);
     }
+
+    // Update the scroll position for the next event
+    previousScrollPositionRef.current = currentSectionElement.scrollTop;
   };
 
   const handleOnTouchStart = (event: React.TouchEvent<HTMLElement>) => {
