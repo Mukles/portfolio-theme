@@ -85,7 +85,7 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
 
     // Define the triggers for when to move to the next section
     const bottomTrigger =
-      isScrollingUp === "down" && sectionHeight === currentScrollPosition;
+      isScrollingUp === "down" && sectionHeight <= currentScrollPosition;
     const upTrigger = isScrollingUp === "up" && currentScrollPosition === 0;
 
     console.log({ bottomTrigger, upTrigger });
