@@ -127,7 +127,9 @@ const Index = ({ path, handleNavigation }: Props): JSX.Element => {
     };
 
     // Add the touch move event listener
-    document.addEventListener("touchend", handleOnTouchMove);
+    document.addEventListener("touchmove", handleOnTouchMove, {
+      passive: true,
+    });
   };
 
   const direction: string =

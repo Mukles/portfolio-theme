@@ -43,13 +43,13 @@ export const sections: Section[] = [
     background: "#fff",
   },
   {
-    id: 5,
+    id: 6,
     component: <Weapens />,
     sectionName: "weapens",
     background: "#fff",
   },
   {
-    id: 6,
+    id: 7,
     component: <Contact />,
     sectionName: "contact",
     background: "#fff",
