@@ -9,6 +9,7 @@ const navigationData: NavigationItem[] = [
   { id: 2, label: "Services", href: "services" },
   { id: 3, label: "Skills", href: "skills" },
   { id: 4, label: "Resume", href: "resume" },
+  { id: 4, label: "Weapens", href: "weapens" },
 ];
 
 export default navigationData;

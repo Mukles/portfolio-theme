@@ -7,9 +7,11 @@
     .cursor {
       @apply fixed top-0 left-0 w-[30px] h-[30px] z-50 opacity-0 transition-opacity duration-200 ease-[cubic-bezier(0.165,0.84,0.44,1)] pointer-events-none mt-[-15px] ml-[-15px] hidden md:block;
     }
+
     .cursor-move-inner {
       @apply absolute top-1/2 left-1/2 w-1 h-1 -mt-[2px] -ml-[2px];
     }
+
     .cursor-move-outer {
       @apply absolute top-0 left-0 w-full h-full;
     }
@@ -25,6 +27,10 @@
     }
     .section-desc {
       @apply text-[16px] leading-[32px] text-base font-light mb-7;
+    }
+
+    .weapen {
+      @apply absolute shadow-[0_18px_29px_20px_rgba(183,189,212,0.16)] bg-white rounded-[16px];
     }
   }
 }

@@ -1,7 +1,10 @@
 import About from "@/components/About";
+import Contact from "@/components/contact";
 import Resume from "@/components/resume";
 import Services from "@/components/services";
 import Skills from "@/components/skills";
+import Testimonials from "@/components/testimonials";
+import Weapens from "@/components/weapens";
 
 // Define a Section interface to keep track of each section's id, component, and section name
 interface Section {
@@ -30,6 +33,24 @@ export const sections: Section[] = [
     id: 4,
     component: <Resume />,
     sectionName: "resume",
+    background: "#fff",
+  },
+  {
+    id: 5,
+    component: <Testimonials />,
+    sectionName: "testimonials",
+    background: "#fff",
+  },
+  {
+    id: 5,
+    component: <Weapens />,
+    sectionName: "weapens",
+    background: "#fff",
+  },
+  {
+    id: 6,
+    component: <Contact />,
+    sectionName: "contact",
     background: "#fff",
   },
 ];

@@ -17,7 +17,6 @@ const variants = {
 };
 
 const SideBar = ({ isOpen, toggle, handleNavigation, path }: Props) => {
-  console.log({ path });
   const sideBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
