@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Contact from "@/components/contact";
+import Footer from "@/components/footer";
 import Resume from "@/components/resume";
 import Services from "@/components/services";
 import Skills from "@/components/skills";
@@ -38,7 +39,7 @@ export const sections: Section[] = [
   {
     id: 5,
     component: <Testimonials />,
-    sectionName: "testimonials",
+    sectionName: "testimonial",
     background: "#fff",
   },
   {
@@ -51,6 +52,12 @@ export const sections: Section[] = [
     id: 6,
     component: <Contact />,
     sectionName: "contact",
+    background: "#fff",
+  },
+  {
+    id: 8,
+    component: <Footer />,
+    sectionName: "footer",
     background: "#fff",
   },
 ];
