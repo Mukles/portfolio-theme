@@ -66,7 +66,7 @@ const Footer = () => {
         </motion.ul>
       </div>
 
-      <div className="absolute bottom-1 left-24 z-20">
+      <div className="absolute bottom-1 left-[5%] z-20">
         <Image
           className="max-w-[50%] sm:max-w-full"
           src={"/img/footer/footer-bottom-girl.png"}

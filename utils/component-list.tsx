@@ -1,6 +1,7 @@
 import About from "@/components/About";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import Project from "@/components/project";
 import Resume from "@/components/resume";
 import Services from "@/components/services";
 import Skills from "@/components/skills";
@@ -34,6 +35,12 @@ export const sections: Section[] = [
     id: 4,
     component: <Resume />,
     sectionName: "resume",
+    background: "#fff",
+  },
+  {
+    id: 10,
+    component: <Project />,
+    sectionName: "project",
     background: "#fff",
   },
   {
