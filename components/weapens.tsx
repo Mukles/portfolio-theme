@@ -1,4 +1,6 @@
+import { fadeInUp } from "@/animations/animate";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import SubTitle from "./sub-title";
@@ -9,24 +11,34 @@ const Weapens = () => {
     <div className="sm:container">
       <div className="flex flex-wrap items-center">
         <div className="lg:grow-0 lg:shrink-0 lg:basis-1/2 lg:max-w-[50%] w-full px-[15px]">
-          <SubTitle className={"mb-[48px]"} title="My Weapons" />
-          <h1 className="section-title">
-            My <TypedAnimation text="Favorite Tools" /> Which I Used Everyday In
-            My Life.
-          </h1>
-
-          <p className="section-desc mt-9">
-            I always loved those software that I use in my work, because I am
-            very good at these, these are the main tools of my design career
-            those are help me for make sure my Clients satisfication.
-          </p>
-          <Link
-            href="#home"
-            className="font-medium text-heading text-lg inline-flex leading-[50px] pb-3 items-center underline hover:text-primary transition-colors hover:no-underline group"
+          <motion.div
+            initial={"hidden"}
+            whileInView={"animate"}
+            transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
           >
-            Lets See My Work Process
-            <ArrowLongRightIcon className="w-5 h-5 ml-3 transition-transform transform-gpu group-hover:translate-x-2" />
-          </Link>
+            <motion.div variants={fadeInUp}>
+              <SubTitle className={"mb-[48px]"} title="My Weapons" />
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="section-title">
+              My <TypedAnimation text="Favorite Tools" /> Which I Used Everyday
+              In My Life.
+            </motion.h1>
+
+            <motion.p variants={fadeInUp} className="section-desc mt-9">
+              I always loved those software that I use in my work, because I am
+              very good at these, these are the main tools of my design career
+              those are help me for make sure my Clients satisfication.
+            </motion.p>
+            <motion.div variants={fadeInUp}>
+              <Link
+                href="#home"
+                className="font-medium text-heading text-lg inline-flex leading-[50px] pb-3 items-center underline hover:text-primary transition-colors hover:no-underline group"
+              >
+                Lets See My Work Process
+                <ArrowLongRightIcon className="w-5 h-5 ml-3 transition-transform transform-gpu group-hover:translate-x-2" />
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
         <div className="lg:grow-0 lg:shrink-0 lg:basis-1/2 lg:max-w-[50%] w-full px-[15px]">
           <div className="max-w-[535px] w-full ml-auto relative pb-[82%]">

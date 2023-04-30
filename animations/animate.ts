@@ -6,7 +6,7 @@ export const fadeInUp = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 80, damping: 30 },
+    transition: { type: "spring", stiffness: 80, damping: 30, restSpeed: 1 },
   },
 };
 

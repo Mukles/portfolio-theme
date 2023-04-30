@@ -35,7 +35,6 @@ const About = () => {
           <div className="lg:pt-[100px]">
             <motion.h3
               variants={fadeInUp}
-              viewport={{ once: false }}
               className="mb-4 before:content-[''] before:top-1/2 before:bg-[#707070] before:absolute before:h-[1px] before:w-[38px] before:left-0 relative"
             >
               <span className="text-sm leading-[14px] text-primary font-medium bg-[#FBF1E7] p-2 px-3 ml-[50px] inline-block">
@@ -44,7 +43,6 @@ const About = () => {
             </motion.h3>
             <motion.h1
               variants={fadeInUp}
-              viewport={{ once: false }}
               className="font-title text-[40px] leading-[48px] sm:text-[45px] sm:leading-[54px] md:text-[55px] md:leading-[66px] xl:text-[68px] xl:leading-[82px] font-bold text-heading"
             >
               Hi, <br /> I&rsquo;m{" "}
@@ -52,7 +50,6 @@ const About = () => {
             </motion.h1>
             <motion.h3
               variants={fadeInUp}
-              viewport={{ once: false }}
               className="text-heading text-[20px] leading-[24px] xm:text-[25px] xm:leading-[30px] sm:text-[31px] sm:leading-[37px] my-3"
             >
               User Interface Designer
@@ -72,7 +69,6 @@ const About = () => {
 
             <motion.a
               variants={fadeInUp}
-              viewport={{ once: false }}
               href="#about"
               className="group text-sm leading-[32px] text-white font-medium capitalize px-[22px] py-[10px] mt-6 mb-9 lg:my-12 text-center bg-primary relative inline-flex w-[150px] justify-between items-center rounded-[15px] before:transition-all before:duration-500 hover:before:left-[calc(100%-49px)] before:absolute before:content-[''] before:flex-none before:z-20  before:w-[44px] before:bg-white before:opacity-20 before:left-[5px] before:rounded-[10px] before:h-[calc(100%-10px)]"
             >
@@ -82,11 +78,7 @@ const About = () => {
               </span>
             </motion.a>
 
-            <motion.ul
-              variants={fadeInUp}
-              viewport={{ once: false }}
-              className="flex space-x-3"
-            >
+            <motion.ul variants={fadeInUp} className="flex space-x-3">
               <li>
                 <a
                   className="hover:shadow-[0_3px_6px_rgba(149,149,149,0.16)] transition-all duration-300 hover:text-primary text-base bg-white p-2 block rounded"

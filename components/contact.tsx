@@ -1,3 +1,5 @@
+import { fadeInUp } from "@/animations/animate";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import SubTitle from "./sub-title";
 
@@ -7,13 +9,23 @@ const Contact = () => {
       <div className="rounded-[25px] shadow-[0_25px_18px_rgba(183,189,212,0.16)]">
         <div className="flex flex-wrap">
           <div className="lg:grow-0 lg:shrink-0 lg:basis-[58%] lg:max-w-[58%] px-[15px] ">
-            <div className="px-[60px] pb-[80px]">
-              <SubTitle title="Contact Me" className="mb-14" />
-              <h1 className="section-title max-w-[400px]">
+            <motion.div
+              initial={"hidden"}
+              whileInView={"animate"}
+              transition={{ staggerChildren: 0.18, delayChildren: 0.5 }}
+              className="px-[60px] pb-[80px]"
+            >
+              <motion.div variants={fadeInUp}>
+                <SubTitle title="Contact Me" className="mb-14" />
+              </motion.div>
+              <motion.h1
+                variants={fadeInUp}
+                className="section-title max-w-[400px]"
+              >
                 Estimate Your Project? Let Me Know Here.
-              </h1>
+              </motion.h1>
 
-              <form className="w-full">
+              <motion.form variants={fadeInUp} className="w-full">
                 <div className="mt-11">
                   <input
                     className="border-b w-full font-light leading-[27px] text-lg focus:border-primary text-[#495057] border-gray-200 focus:outline-none pb-[15px]"
@@ -40,8 +52,8 @@ const Contact = () => {
                     placeholder="Tell me about your project?"
                   />
                 </div>
-              </form>
-            </div>
+              </motion.form>
+            </motion.div>
           </div>
           <div className="lg:grow-0 lg:shrink-0 lg:basis-[42%] lg:max-w-[42%] px-[15px]">
             <Image

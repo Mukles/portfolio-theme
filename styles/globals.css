@@ -23,7 +23,7 @@
     }
 
     .section-title {
-      @apply text-[28px] leading-[38px] xm:text-[30px] xm:leading-[41px] sm:text-[35px] sm:leading-[47px] font-bold text-heading font-title mb-5;
+      @apply text-[28px] leading-[38px] xm:text-[30px] xm:leading-[41px] sm:text-[35px] sm:leading-[47px] font-bold text-heading font-title mb-[25px];
     }
     .section-desc {
       @apply text-[16px] leading-[32px] text-base font-light mb-7;

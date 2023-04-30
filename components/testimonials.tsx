@@ -1,3 +1,5 @@
+import { fadeInUp } from "@/animations/animate";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import SubTitle from "./sub-title";
 import TypedAnimation from "./typed-animation";
@@ -15,18 +17,25 @@ const Testimonials = () => {
           />
         </div>
         <div className="lg:grow-0 lg:shrink-0 lg:basis-1/2 lg:max-w-[50%] w-full px-[15px]">
-          <div className="max-w-[540px] ml-auto pb-8">
-            <SubTitle title="Testimonial" className="mb-10" />
-            <h1 className="section-title">
+          <motion.div
+            initial={"hidden"}
+            whileInView={"animate"}
+            transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
+            className="max-w-[540px] ml-auto pb-8"
+          >
+            <motion.div variants={fadeInUp}>
+              <SubTitle title="Testimonial" className="mb-10" />
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="section-title">
               What My Happy <TypedAnimation text="Client" /> Saying Their
               Services.
-            </h1>
-            <p className="section-desc mt-10">
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="section-desc mt-10">
               Really they guy is amazing , he saved my times and properly have
               completed my requirment with great effort. I appreciate to him for
               web & app design, he is good at fit.
-            </p>
-            <div>
+            </motion.p>
+            <motion.div variants={fadeInUp}>
               <div className="mt-14 flex items-center space-x-6">
                 <Image
                   width={70}
@@ -50,8 +59,8 @@ const Testimonials = () => {
                 <li className="inline-block rounded-full relative after:m-0.5 after:block after:left-0 after:top-0 after:w-[10px] cursor-pointer after:h-[10px]  after:rounded-full after:bg-primary border border-gray-400 mx-1"></li>
                 <li className="inline-block rounded-full relative after:m-0.5 after:block after:left-0 after:top-0 after:w-[10px] cursor-pointer after:h-[10px]  after:rounded-full after:bg-gray-400 border border-transparent mx-1"></li>
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>
